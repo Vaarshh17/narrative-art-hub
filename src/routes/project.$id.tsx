@@ -112,7 +112,7 @@ function ProjectPage() {
 
             <h3 className="font-display text-xl mt-10 mb-4">Highlights</h3>
             <ul className="space-y-3">
-              {item.highlights.map((h, i) => (
+              {item.highlights.map((h: string, i: number) => (
                 <li key={i} className="flex gap-3 text-fg/85">
                   <span className="text-brand mt-1.5 shrink-0">▍</span>
                   <span>{h}</span>
@@ -129,7 +129,7 @@ function ProjectPage() {
               <div>
                 <p className="text-xs uppercase tracking-widest text-muted mb-2">Stack</p>
                 <div className="flex flex-wrap gap-2">
-                  {item.stack.map((s) => (
+                  {item.stack.map((s: string) => (
                     <span key={s} className="text-xs px-2.5 py-1 rounded-full bg-surface-2 border border-border">
                       {s}
                     </span>
@@ -141,7 +141,7 @@ function ProjectPage() {
               <div>
                 <p className="text-xs uppercase tracking-widest text-muted mb-2">Tags</p>
                 <div className="flex flex-wrap gap-2">
-                  {item.tags.map((t) => (
+                  {item.tags.map((t: string) => (
                     <span key={t} className="text-xs px-2.5 py-1 rounded-full bg-brand/15 text-brand-soft">
                       {t}
                     </span>
@@ -157,7 +157,7 @@ function ProjectPage() {
           <div className="mt-16">
             <h3 className="font-display text-2xl mb-4">Gallery</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {item.gallery.map((g, i) => (
+              {item.gallery.map((g: string, i: number) => (
                 <div key={i} className="aspect-video rounded-md overflow-hidden bg-surface-2">
                   <img src={g} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </div>
