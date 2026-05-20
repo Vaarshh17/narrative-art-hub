@@ -1,7 +1,17 @@
 import { hero } from "@/data/portfolio";
 import { Play, Info } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export function Hero() {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(
+      () => setIndex((i) => (i + 1) % hero.portraits.length),
+      2800,
+    );
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <header className="relative w-full h-[90vh] min-h-[640px] overflow-hidden">
       {/* Background */}
@@ -10,9 +20,18 @@ export function Hero() {
         <div className="absolute inset-0 hero-fade" />
       </div>
 
-      {/* Portrait — replace src/assets/portfolio/hero-portrait.jpg */}
+      {/* Rotating portraits — drop your images into src/assets/portfolio/
+          and list them in hero.portraits inside src/data/portfolio.ts */}
       <div className="hidden md:block absolute right-12 bottom-24 w-[380px] aspect-[3/4] rounded-lg overflow-hidden border border-white/10 shadow-2xl animate-fade-up">
-        <img src={hero.portrait} alt="Varsha portrait" className="w-full h-full object-cover" />
+        {hero.portraits.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt="Varsha portrait"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+            style={{ opacity: i === index ? 1 : 0 }}
+          />
+        ))}
       </div>
 
       {/* Content */}
