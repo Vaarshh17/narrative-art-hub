@@ -42,7 +42,7 @@ export const rows: Row[] = [
   {
     key: "experience",
     title: "Experience",
-    layout: "landscape",
+    layout: "portrait",
     items: [
       {
         id: "grab",
@@ -87,7 +87,7 @@ export const rows: Row[] = [
   {
     key: "projects",
     title: "Projects",
-    layout: "landscape",
+    layout: "portrait",
     items: [
       {
         id: "techdocs-mcp",
@@ -231,7 +231,7 @@ export const rows: Row[] = [
   {
     key: "leadership",
     title: "Leadership",
-    layout: "landscape",
+    layout: "portrait",
     items: [
       {
         id: "design-duel-director",
