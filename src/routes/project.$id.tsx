@@ -152,20 +152,6 @@ function ProjectPage() {
           </aside>
         </div>
 
-        {/* Gallery */}
-        {item.gallery && item.gallery.length > 0 && (
-          <div className="mt-16">
-            <h3 className="font-display text-2xl mb-4">Gallery</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {item.gallery.map((g: string, i: number) => (
-                <div key={i} className="aspect-video rounded-md overflow-hidden bg-surface-2">
-                  <img src={g} alt="" className="w-full h-full object-cover" loading="lazy" />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* More like this */}
         <div className="mt-20">
           <h3 className="font-display text-2xl mb-4">More like this</h3>
