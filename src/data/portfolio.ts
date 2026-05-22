@@ -2,6 +2,11 @@
 // To use your own images: drop them in src/assets/portfolio/ and import them,
 // or replace the Unsplash URLs below.
 
+import hero1 from "@/assets/portfolio/hero-1.png";
+import hero2 from "@/assets/portfolio/hero-2.png";
+import hero3 from "@/assets/portfolio/hero-3.png";
+import hero4 from "@/assets/portfolio/hero-4.png";
+
 export type Item = {
   id: string;
   title: string;
@@ -35,12 +40,7 @@ export const hero = {
   // Replace these with your own images in src/assets/portfolio/
   background: img("photo-1451187580459-43490279c0fa", 1920),
   // Multiple portraits that rotate in the hero carousel.
-  portraits: [
-    "/src/assets/portfolio/hero-1.png",
-    "/src/assets/portfolio/hero-2.png",
-    "/src/assets/portfolio/hero-3.png",
-    "/src/assets/portfolio/hero-4.png",
-  ],
+  portraits: [hero1, hero2, hero3, hero4],
   avatar: img("photo-1438761681033-6461ffad8d80", 200),
 };
 
