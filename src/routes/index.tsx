@@ -28,7 +28,7 @@ function Index() {
     <div className="min-h-screen bg-bg text-fg">
       <Nav />
       <Hero />
-      <main className="-mt-20 relative z-10 flex flex-col gap-10 pb-20">
+      <main className="relative z-10 flex flex-col gap-10 pb-20">
         {rows.filter((r) => r.key !== "skills").map((r) => (
           <Row key={r.key} row={r} />
         ))}

@@ -12,7 +12,9 @@ export function Contact() {
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a
-            href="mailto:varshask4757@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=varshask4757@gmail.com"
+            target="_blank"
+            rel="noreferrer"
             className="bg-white text-black px-7 py-3 rounded font-semibold flex items-center gap-2 hover:bg-white/85 transition"
           >
             <Mail className="w-5 h-5" />
@@ -28,7 +30,6 @@ export function Contact() {
             Connect on LinkedIn
           </a>
         </div>
-        <p className="mt-6 text-sm text-muted">+60 11-6423 5524</p>
       </div>
     </section>
   );

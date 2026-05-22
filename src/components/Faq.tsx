@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 const faqs = [
@@ -45,34 +45,62 @@ const faqs = [
 ];
 
 export function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
     <section id="faq" className="px-6 md:px-12 mt-16">
       <h2 className="font-display text-3xl md:text-5xl font-semibold text-center mb-8">
         Frequently Asked Questions
       </h2>
-      <div className="max-w-3xl mx-auto flex flex-col gap-2">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3">
         {faqs.map((f, i) => {
           const isOpen = open === i;
+          const isHovered = hovered === i;
           return (
-            <div key={i} className="bg-surface-2">
+            <div
+              key={i}
+              style={{
+                backgroundColor: isHovered || isOpen ? "#2A2A2A" : "#221F1F",
+                borderLeft: "2px solid #E50914",
+                transition: "background-color 200ms",
+              }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+            >
               <button
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-surface-3 transition"
+                className="w-full flex items-center justify-between px-5 py-4 text-left"
               >
-                <span className="font-display text-lg md:text-xl">{f.q}</span>
-                <Plus
-                  className={`w-7 h-7 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}
+                <span
+                  className="font-semibold text-white pr-3"
+                  style={{ fontSize: "15px" }}
+                >
+                  {f.q}
+                </span>
+                <ChevronDown
+                  className="shrink-0 transition-transform duration-300"
+                  style={{
+                    width: "18px",
+                    height: "18px",
+                    color: "#E50914",
+                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  }}
                 />
               </button>
               <div
-                className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                style={{
+                  maxHeight: isOpen ? "300px" : "0",
+                  overflow: "hidden",
+                  transition: "max-height 300ms ease",
+                }}
               >
-                <div className="overflow-hidden">
-                  <p className="px-6 pb-6 text-base md:text-lg text-fg/85 leading-relaxed border-t border-border pt-5">
-                    {f.a}
-                  </p>
-                </div>
+                <p
+                  className="px-5 pb-5 leading-relaxed"
+                  style={{ color: "#A3A3A3", fontSize: "14px" }}
+                >
+                  {f.a}
+                </p>
               </div>
             </div>
           );

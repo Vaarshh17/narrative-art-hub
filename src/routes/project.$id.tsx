@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
-import { ArrowLeft, ExternalLink, Play } from "lucide-react";
+import { ArrowLeft, Play } from "lucide-react";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { findItem, rows } from "@/data/portfolio";
@@ -93,12 +93,6 @@ function ProjectPage() {
                 <Play className="w-4 h-4 fill-black" /> Open project
               </a>
             )}
-            <a
-              href="mailto:varshask4757@gmail.com"
-              className="bg-white/15 backdrop-blur px-6 py-3 rounded font-semibold inline-flex items-center gap-2 hover:bg-white/25"
-            >
-              <ExternalLink className="w-4 h-4" /> Get in touch
-            </a>
           </div>
         </div>
       </div>

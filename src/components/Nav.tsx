@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { hero } from "@/data/portfolio";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,9 +33,6 @@ export function Nav() {
         >
           varshask4757@gmail.com
         </a>
-        <div className="w-9 h-9 rounded-md overflow-hidden border border-border">
-          <img src={hero.avatar} alt="Varsha" className="w-full h-full object-cover" />
-        </div>
       </div>
     </nav>
   );

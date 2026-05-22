@@ -15,58 +15,47 @@ export function Hero() {
 
   return (
     <header className="relative w-full min-h-[90vh] overflow-hidden">
-      {/* Blurred background of current slide */}
+      {/* Full-bleed background carousel */}
       <div className="absolute inset-0">
-        <img
-          src={hero.portraits[index]}
-          alt=""
-          className="w-full h-full object-cover blur-2xl scale-110 opacity-40 transition-opacity duration-700"
+        {hero.portraits.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+            style={{ opacity: i === index ? 1 : 0 }}
+          />
+        ))}
+        {/* Desktop: horizontal gradient — dark left for text, lighter right for image */}
+        <div
+          className="absolute inset-0 hidden md:block"
+          style={{ background: "linear-gradient(to right, rgba(20,20,20,0.92) 40%, rgba(20,20,20,0.15) 100%)" }}
         />
-        <div className="absolute inset-0 bg-bg/70" />
-        <div className="absolute inset-0 hero-fade" />
+        {/* Mobile: vertical gradient — dark at top, lighter at bottom */}
+        <div
+          className="absolute inset-0 md:hidden"
+          style={{ background: "linear-gradient(to bottom, rgba(20,20,20,0.85) 0%, rgba(20,20,20,0.35) 100%)" }}
+        />
       </div>
 
-      {/* Carousel — portrait 3:4 */}
-      <div className="hidden md:flex absolute right-12 top-1/2 -translate-y-1/2 flex-col items-center gap-3 z-10">
-        <div className="relative w-[360px] aspect-[3/4] rounded-lg overflow-hidden border border-white/10 shadow-2xl bg-black">
-          {hero.portraits.map((src, i) => (
-            <img
-              key={src}
-              src={src}
-              alt={`Varsha ${i + 1}`}
-              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-              style={{ opacity: i === index ? 1 : 0 }}
-            />
-          ))}
-          <button
-            onClick={() => go(-1)}
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center"
-            aria-label="Previous"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => go(1)}
-            className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center"
-            aria-label="Next"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
-        <div className="flex gap-2">
-          {hero.portraits.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              aria-label={`Slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all ${i === index ? "w-8 bg-white" : "w-3 bg-white/30"}`}
-            />
-          ))}
-        </div>
-      </div>
+      {/* Prev/Next arrows — desktop only */}
+      <button
+        onClick={() => go(-1)}
+        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-black/80 items-center justify-center transition"
+        aria-label="Previous"
+      >
+        <ChevronLeft className="w-5 h-5 text-white" />
+      </button>
+      <button
+        onClick={() => go(1)}
+        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-black/80 items-center justify-center transition"
+        aria-label="Next"
+      >
+        <ChevronRight className="w-5 h-5 text-white" />
+      </button>
 
-      {/* Content */}
-      <div className="relative z-10 flex min-h-[90vh] flex-col justify-end pb-24 px-6 md:px-12 max-w-3xl animate-fade-up">
+      {/* Content — left-aligned on desktop, centered on mobile */}
+      <div className="relative z-10 flex min-h-[90vh] flex-col justify-end pb-32 px-6 md:px-16 max-w-3xl animate-fade-up md:items-start items-center text-center md:text-left">
         <p className="text-brand-soft text-xs tracking-[0.25em] uppercase font-semibold mb-3">
           AI Engineer · Hackathon Champion
         </p>
@@ -75,7 +64,7 @@ export function Hero() {
         </h1>
         <p className="mt-4 text-xl md:text-2xl text-fg/90 font-display">{hero.tagline}</p>
         <p className="mt-3 max-w-xl text-base text-muted leading-relaxed">{hero.blurb}</p>
-        <div className="mt-6 flex flex-wrap items-center gap-3">
+        <div className="mt-6 flex flex-wrap items-center gap-3 justify-center md:justify-start">
           <a
             href="#projects"
             className="bg-white text-black px-7 py-3 rounded font-semibold flex items-center gap-2 hover:bg-white/85 transition"
@@ -91,18 +80,14 @@ export function Hero() {
             More Info
           </a>
         </div>
-      </div>
-
-      {/* Mobile carousel */}
-      <div className="md:hidden relative z-10 px-6 -mt-10 pb-10">
-        <div className="relative w-full aspect-[3/4] max-w-sm mx-auto rounded-lg overflow-hidden border border-white/10 shadow-2xl bg-black">
-          {hero.portraits.map((src, i) => (
-            <img
-              key={src}
-              src={src}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-              style={{ opacity: i === index ? 1 : 0 }}
+        {/* Dot indicators */}
+        <div className="flex gap-2 mt-5">
+          {hero.portraits.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              aria-label={`Slide ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all ${i === index ? "w-8 bg-white" : "w-3 bg-white/30"}`}
             />
           ))}
         </div>
