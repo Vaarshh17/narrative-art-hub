@@ -34,11 +34,12 @@ export const hero = {
     "Computer Science student at University Malaya. AI engineer, hackathon champion, and product-minded builder bridging business and technical perspectives.",
   // Replace these with your own images in src/assets/portfolio/
   background: img("photo-1451187580459-43490279c0fa", 1920),
-  // Multiple portraits that rotate in the hero. Add/remove as you like.
+  // Multiple portraits that rotate in the hero carousel.
   portraits: [
-    img("photo-1494790108377-be9c29b29330", 900),
-    img("photo-1438761681033-6461ffad8d80", 900),
-    img("photo-1531123897727-8f129e1688ce", 900),
+    "/src/assets/portfolio/hero-1.png",
+    "/src/assets/portfolio/hero-2.png",
+    "/src/assets/portfolio/hero-3.png",
+    "/src/assets/portfolio/hero-4.png",
   ],
   avatar: img("photo-1438761681033-6461ffad8d80", 200),
 };
